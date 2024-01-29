@@ -1,0 +1,57 @@
+name: marian
+description: Test application for Robinhood
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI
+  shimmer: ^3.0.0
+  custom_sliding_segmented_control: ^1.8.1
+  flutter_svg: ^2.0.9
+  infinite_scroll_pagination: ^4.0.0
+
+  # State Management
+  bloc: ^8.0.2
+  flutter_bloc: ^8.0.1
+
+  # Network And Core
+  equatable: ^2.0.5
+  convert: ^3.1.1
+  collection: ^1.18.0
+  fpdart: ^1.1.0
+  dio: ^5.4.0
+  intl: ^0.19.0
+  shared_preferences: ^2.2.2
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.1
+  flutter_launcher_icons: ^0.13.1
+  mocktail: ^1.0.3
+  mockingjay: ^0.5.0
+  bloc_test: ^9.1.5
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+
+  fonts:
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/Rubik-Regular.ttf
+        - asset: assets/fonts/Rubik-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Rubik-SemiBold.ttf
+          weight: 600
