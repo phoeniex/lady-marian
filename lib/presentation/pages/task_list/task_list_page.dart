@@ -129,7 +129,7 @@ class _TaskListState extends State<_TaskList> {
   @override
   void initState() {
     _pagingController.addPageRequestListener((page) {
-      cubit.fetchTasks(0, TaskStatus.toDo);
+      cubit.fetchTasks(page, TaskStatus.toDo);
     });
     super.initState();
   }
@@ -138,7 +138,7 @@ class _TaskListState extends State<_TaskList> {
   Widget build(BuildContext context) {
     return BlocConsumer<TaskListCubit, TaskListState>(builder: (context, state) {
       if (state.behavior == TaskListBehavior.firstFetching) {
-        return const TaskLoadingList();
+        return const Expanded(child: TaskLoadingList());
       } else {
         return Expanded(
           child: PagedListView<int, TaskDisplayed>.separated(
@@ -157,7 +157,6 @@ class _TaskListState extends State<_TaskList> {
                 },
                 newPageProgressIndicatorBuilder: (context) => const TaskCardLoading(),
                 noItemsFoundIndicatorBuilder: (context) => const TaskEmptyList(),
-                firstPageProgressIndicatorBuilder: (context) => const TaskLoadingList(),
                 firstPageErrorIndicatorBuilder: (context) => const TaskListServiceError(),
               )),
         );

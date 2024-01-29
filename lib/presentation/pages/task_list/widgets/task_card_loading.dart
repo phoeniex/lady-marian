@@ -16,19 +16,22 @@ class _TaskCardLoadingState extends State<TaskCardLoading> with SingleTickerProv
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (_, child) {
-          return Transform.rotate(
-            angle: _controller.value * 2 * math.pi,
-            child: child,
-          );
-        },
-        child: SvgPicture.asset('assets/icons/ic_refresh.svg',
-          width: 24,
-          height: 24,
-          colorFilter: ColorFilter.mode(AppColor.icon.loading, BlendMode.srcIn),
+    return SizedBox(
+      height: 40,
+      child: Center(
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (_, child) {
+            return Transform.rotate(
+              angle: _controller.value * 2 * math.pi,
+              child: child,
+            );
+          },
+          child: SvgPicture.asset('assets/icons/ic_refresh.svg',
+            width: 24,
+            height: 24,
+            colorFilter: ColorFilter.mode(AppColor.icon.loading, BlendMode.srcIn),
+          ),
         ),
       ),
     );

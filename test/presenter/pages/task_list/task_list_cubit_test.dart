@@ -88,7 +88,7 @@ void main() {
             behavior: TaskListBehavior.displayed,
             tasks: taskDisplayedMock,
             taskStatus: TaskStatus.toDo,
-            currentPage: 1,
+            currentPage: 0,
           ),
         ],
         verify: (cubit) {
@@ -109,7 +109,7 @@ void main() {
             behavior: TaskListBehavior.displayed,
             tasks: taskDisplayedMock2,
             taskStatus: TaskStatus.toDo,
-            currentPage: 2,
+            currentPage: 1,
             isEnded: true,
           ),
         ],

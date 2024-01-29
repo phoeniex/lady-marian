@@ -11,15 +11,15 @@ part 'task_list_state.dart';
 class TaskListCubit extends Cubit<TaskListState> {
   final TaskRepository _taskRepository;
 
-  TaskListCubit({required TaskRepository taskRepository}) :
-        _taskRepository = taskRepository,
+  TaskListCubit({required TaskRepository taskRepository})
+      : _taskRepository = taskRepository,
         super(const TaskListState());
 
   Future<void> fetchTasks(int page, TaskStatus status) async {
     final result = await _taskRepository.getTasks(page: page, status: status);
     result.fold(
-            (left) => _fetchFailure(left),
-            (right) => _fetchSuccess(right),
+      (left) => _fetchFailure(left),
+      (right) => _fetchSuccess(right),
     );
   }
 
@@ -36,8 +36,8 @@ class TaskListCubit extends Cubit<TaskListState> {
     for (int index = 0; index < remainingTasks.length; index++) {
       var task = remainingTasks[index];
       if (task.type == TaskDisplayType.header) {
-        if (index+1 < remainingTasks.length) {
-          var nextTask = remainingTasks[index+1];
+        if (index + 1 < remainingTasks.length) {
+          var nextTask = remainingTasks[index + 1];
 
           // recheck header is close to each others remove the first one
           if (nextTask.type == TaskDisplayType.header) {
@@ -58,7 +58,7 @@ class TaskListCubit extends Cubit<TaskListState> {
       state.copyWith(
         behavior: TaskListBehavior.displayed,
         tasks: [...state.tasks, ...paging.items?.toDisplayed() ?? []],
-        currentPage: (paging.currentPage ?? 0) + 1,
+        currentPage: (paging.currentPage ?? 0),
         isEnded: paging.isLastPage,
       ),
     );
@@ -71,5 +71,4 @@ class TaskListCubit extends Cubit<TaskListState> {
       ),
     );
   }
-
 }
